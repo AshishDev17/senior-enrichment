@@ -31,11 +31,9 @@ campusRouter.post('/', (req, res, next) => {
   .catch(next);
 });
 
-// PUT '/:studentId' => edit the student by id
+// PUT '/:studentId' => edit the campus by id
 campusRouter.put('/:campusId', (req, res, next) => {
-  Campus.update({
-    name: req.body.name
-  }, {
+  Campus.update(req.body, {
     where: {
       id: req.params.campusId
     },

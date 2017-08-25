@@ -42,7 +42,7 @@ studentRouter.post('/', (req, res, next) => {
 studentRouter.put('/:studentId', (req, res, next) => {
   Student.update(req.body, {
     where: {
-      id: req.params.studentID
+      id: req.params.studentId
     },
     returning: true
   })
