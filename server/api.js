@@ -11,7 +11,7 @@ const db = require('../db');
 // api.get('/student', (req, res) => res.send({hello: 'world'}));
 // api.get('/campus', (req, res) => res.send({hello: 'world'}));
 
-api.use('/student', require('./student'));
-api.use('/campus', require('./campus'));
+api.use('/students', require('./student'));
+api.use('/campuses', require('./campus'));
 
 module.exports = api
