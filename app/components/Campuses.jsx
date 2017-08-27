@@ -15,7 +15,6 @@ export default class Campuses extends Component{
           <h4>CAMPUS NAME</h4>
           </NavLink>
           <div>
-            <button>EDIT </button>
             <button>DELETE </button>
           </div>
         </div>
@@ -26,9 +25,8 @@ export default class Campuses extends Component{
           </NavLink>
         </div>
         <div>
-            <button>EDIT </button>
             <button>DELETE </button>
-          </div>
+        </div>
       </div>
     )
   }

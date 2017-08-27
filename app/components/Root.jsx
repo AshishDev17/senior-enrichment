@@ -25,6 +25,7 @@ export default class Root extends Component {
             <Navbar />
           </div>
           <div>
+            <Route exact path="/home" component={Campuses} />
             <Route exact path="/campuses" component={Campuses} />
             <Route path="/campuses/:campusId" component={SingleCampus} />
             <Route exact path="/students" component={Students} />

@@ -1,7 +1,7 @@
 'use strict'
 const campusRouter = require('express').Router();
 const db = require('../db');
-const {Campus} = require('../db/models/index');
+const {Campus, Student} = require('../db/models/index');
 const Promise = require('bluebird');
 
 module.exports = campusRouter;

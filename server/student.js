@@ -25,6 +25,17 @@ studentRouter.get('/:studentId', (req, res, next) => {
   .catch(next);
 });
 
+// GET '/campus/:campusId' => get students for campus by campus id
+studentRouter.get('/campus/:campusId', (req, res, next) => {
+  Student.findAll({
+    where: {
+      campusId: req.params.campusId
+    }
+  })
+  .then(student => res.json(student))
+  .catch(next);
+});
+
 // POST '/' => create a new student
 studentRouter.post('/', (req, res, next) => {
   Campus.findById(req.body.campusId)

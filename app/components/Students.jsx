@@ -22,7 +22,6 @@ export default class Students extends Component{
               <td>INDEX</td>
               <td><NavLink to="/students/:studentId">STUDENT NAME</NavLink></td>
               <td><NavLink to="/campuses/:campusId">CAMPUS NAME</NavLink></td>
-              <td><button>EDIT </button></td>
               <td><button>DELETE </button></td>
             </tr>
           </tbody>

@@ -8,18 +8,25 @@ export default class SingleCampus extends Component{
     return (
       <div>
         <h2>NAME OF CAMPUS</h2>
-        <div>
-          <NavLink to="/students/:studentId">
-          <h5>STUDENT NAME</h5>
-          </NavLink>
-          <NavLink to="/students/:studentId">
-          <h5>STUDENT NAME</h5>
-          </NavLink>
-          <NavLink to="/students/:studentId">
-          <h5>STUDENT NAME</h5>
-          </NavLink>
-        </div>
+        <button> EDIT CAMPUS</button>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Student Name </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>INDEX</td>
+              <td><NavLink to="/students/:studentId">STUDENT NAME</NavLink></td>
+              <td><button>DELETE </button></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     )
   }
 }
+
+
