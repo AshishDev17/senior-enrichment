@@ -30,7 +30,12 @@ studentRouter.get('/campus/:campusId', (req, res, next) => {
   Student.findAll({
     where: {
       campusId: req.params.campusId
-    }
+    },
+    include:[
+      {
+        model: Campus
+      }
+    ]
   })
   .then(student => res.json(student))
   .catch(next);

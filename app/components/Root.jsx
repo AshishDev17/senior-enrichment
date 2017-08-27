@@ -12,9 +12,7 @@ import SingleStudent from './SingleStudent';
 export default class Root extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-
-    }
+    this.state = store.getState();
   }
 
   render() {
