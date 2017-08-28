@@ -23,7 +23,7 @@ export default class SingleCampus extends Component{
 
   render() {
     const students = this.state.students;
-    console.log(this.state.students);
+    //console.log(this.state.students);
     //console.log(this.state.students[0].campus);
 
     return (

@@ -9,7 +9,13 @@ module.exports = studentRouter;
 
 // GET '/' =>  get all students
 studentRouter.get('/', (req, res, next) => {
-  Student.findAll()
+  Student.findAll({
+    include:[
+      {
+        model: Campus
+      }
+    ]
+  })
   .then(allStudents => res.json(allStudents))
   .catch(next);
 });
@@ -19,7 +25,12 @@ studentRouter.get('/:studentId', (req, res, next) => {
   Student.findOne({
     where: {
       id: req.params.studentId
-    }
+    },
+    include:[
+      {
+        model: Campus
+      }
+    ]
   })
   .then(student => res.json(student))
   .catch(next);

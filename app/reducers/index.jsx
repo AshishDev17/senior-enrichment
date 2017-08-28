@@ -4,6 +4,7 @@ import { combineReducers } from 'redux'
 const GOT_CAMPUSES_FROM_SERVER = 'GOT_CAMPUSES_FROM_SERVER';
 const GOT_STUDENTS_FROM_SERVER = 'GOT_STUDENTS_FROM_SERVER';
 const GOT_STUDENTS_FOR_SINGLE_CAMPUS = 'GOT_STUDENTS_FOR_SINGLE_CAMPUS';
+const GOT_SINGLE_STUDENT_FROM_SERVER = 'GOT_SINGLE_STUDENT_FROM_SERVER';
 
 
 //Action Creators
@@ -28,10 +29,18 @@ export function gotStudentsForSingleCampus(students) {
   };
 }
 
+export function gotSingleStudentFromServer(student) {
+  return {
+    type: GOT_SINGLE_STUDENT_FROM_SERVER,
+    student: student
+  };
+}
+
 //Initial State
 const initialState = {
   campuses: [],
-  students: []
+  students: [],
+  singleStudent: {}
 };
 
 //Reducer
@@ -46,6 +55,9 @@ const rootReducer = function(state = initialState, action) {
       return newState;
     case GOT_STUDENTS_FOR_SINGLE_CAMPUS:
       newState.students = action.students;
+      return newState;
+    case GOT_SINGLE_STUDENT_FROM_SERVER:
+      newState.singleStudent = action.student;
       return newState;
     default: return state;
   }

@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-import rootReducer, { gotCampusesFromServer, gotStudentsFromServer, gotStudentsForSingleCampus } from './reducers';
+import rootReducer, { gotCampusesFromServer, gotStudentsFromServer, gotStudentsForSingleCampus, gotSingleStudentFromServer } from './reducers';
 import createLogger from 'redux-logger'; // https://github.com/evgenyrodionov/redux-logger
 import thunkMiddleware from 'redux-thunk'; // https://github.com/gaearon/redux-thunk
 import axios from 'axios';
@@ -26,6 +26,14 @@ export function fetchStudentsForSingleCampus(campusId){
     axios.get(`/api/students/campus/${campusId}`)
     .then(res => res.data)
     .then(students => dispatch(gotStudentsForSingleCampus(students)));
+  };
+}
+
+export function fetchSingleStudentFromServer(studentId){
+  return function thunk(dispatch){
+    axios.get(`/api/students/${studentId}`)
+    .then(res => res.data)
+    .then(student => dispatch(gotSingleStudentFromServer(student)));
   };
 }
 
