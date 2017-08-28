@@ -1,6 +1,7 @@
 'use strict';
 import React, { Component } from 'react';
 import store, {fetchCampuses} from '../store';
+//import {makeVisible} from '../reducers';
 import {NavLink} from 'react-router-dom';
 
 export default class Campuses extends Component{
@@ -18,15 +19,15 @@ export default class Campuses extends Component{
     this.unsubscribe();
   }
 
-
-
   render() {
     const campuses = this.state.campuses;
     //console.log(campuses);
     return (
       <div>
         <h2>Campuses</h2>
-        <button>CREATE</button>
+        <div>
+          <NavLink to="/campuses/createcampus">CREATE NEW CAMPUS</NavLink>
+        </div>
         <hr/>
         {
           campuses.map((campus) => {
@@ -35,6 +36,9 @@ export default class Campuses extends Component{
               <img src={campus.image} alt={campus.name}/>
               <h4>{campus.name}</h4>
               </NavLink>
+              <div>
+              <p>{campus.description}</p>
+              </div>
               <div>
                 <button>Delete {campus.name} </button>
               </div>

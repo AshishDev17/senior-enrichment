@@ -29,11 +29,11 @@ export default class SingleStudent extends Component{
         <button>EDIT STUDENT</button>
         <div>
           <label htmlFor="">Student Name: </label>
-          <input type="text" name="studentName" value={student.firstName + ' ' + student.lastName} disabled="true"/>
+          <input type="text" name="studentName" value={student.firstName + ' ' + student.lastName} readonly/>
         </div>
         <div>
           <label htmlFor="">Student Email: </label>
-          <input type="text" name="studentEmail" value={student.email} disabled="true"/>
+          <input type="text" name="studentEmail" value={student.email} readonly/>
         </div>
         <div>
           <label htmlFor="">Campus Name: </label>
