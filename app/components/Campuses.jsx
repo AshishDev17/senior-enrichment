@@ -17,7 +17,7 @@ function Campuses(props) {
           campuses.map((campus) => {
           return <div key={campus.id}>
               <NavLink to={`/campuses/${campus.id}`}>
-              <img src={campus.image} alt={campus.name}/>
+              {/*<img src={campus.image} alt={campus.name}/>*/}
               <h4>{campus.name}</h4>
               </NavLink>
               <div>

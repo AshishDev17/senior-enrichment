@@ -5,11 +5,12 @@ import {withRouter, NavLink} from 'react-router-dom';
 
 function SingleCampus(props) {
   const students = props.students;
-  console.log(students);
+  //console.log(students);
+
 
   return (
     <div>
-      <h2>Campus Name</h2>
+      <h2>{students[0].campus ? students[0].campus.name : null}</h2>
       <button> EDIT CAMPUS</button>
       <table>
         <thead>

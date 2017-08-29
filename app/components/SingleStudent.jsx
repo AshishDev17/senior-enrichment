@@ -5,7 +5,7 @@ import {withRouter, NavLink} from 'react-router-dom';
 
 function SingleStudent(props) {
   const student = props.singleStudent;
-  console.log(student);
+  //console.log(student);
 
   return (
     <div>

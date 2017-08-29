@@ -11,3 +11,4 @@ export default createStore(rootReducer, applyMiddleware(thunkMiddleware, createL
 export * from './reducers/students';
 export * from './reducers/campuses';
 export * from './reducers/singleStudent';
+export * from './reducers/newCampusEntry';

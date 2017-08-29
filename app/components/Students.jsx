@@ -5,7 +5,7 @@ import {withRouter, NavLink} from 'react-router-dom';
 
 function Students (props){
   const students = props.students;
-    console.log(students);
+    //console.log(students);
     return (
       <div>
         <h2>ALL STUDENTS</h2>
