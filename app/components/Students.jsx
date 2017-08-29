@@ -1,24 +1,10 @@
 'use strict';
 import React, { Component } from 'react';
-import store, {fetchStudents} from '../store';
-import {NavLink} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {withRouter, NavLink} from 'react-router-dom';
 
-export default class Students extends Component{
-  constructor(props){
-    super(props);
-    this.state = store.getState();
-  }
-
-  componentDidMount() {
-    store.dispatch(fetchStudents());
-    this.unsubscribe = store.subscribe(() => {this.setState(store.getState())})
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
-  render() {
-    const students = this.state.students;
+function Students (props){
+  const students = props.students;
     console.log(students);
     return (
       <div>
@@ -47,5 +33,13 @@ export default class Students extends Component{
         </table>
       </div>
     )
+}
+
+//write code for connect
+const mapStateToProps = function(state){
+  return{
+    students: state.students
   }
 }
+
+export default withRouter(connect(mapStateToProps)(Students));

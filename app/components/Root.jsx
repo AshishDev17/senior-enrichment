@@ -1,7 +1,7 @@
 'use strict'
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import store from '../store';
+import store, {fetchCampuses, fetchStudents} from '../store';
 import Navbar from './Navbar';
 import Campuses from './Campuses';
 import SingleCampus from './SingleCampus';
@@ -11,9 +11,10 @@ import CreateCampus from './CreateCampus';
 
 
 export default class Root extends Component {
-  constructor(props) {
-    super(props);
-    this.state = store.getState();
+
+  componentDidMount() {
+    store.dispatch(fetchCampuses());
+    store.dispatch(fetchStudents());
   }
 
   render() {
@@ -26,10 +27,10 @@ export default class Root extends Component {
           <div>
             <Switch>
               <Route exact path="/home" component={Campuses} />
+              <Route path="/newcampus" component={CreateCampus} />
               <Route exact path="/campuses" component={Campuses} />
-              <Route path="/campuses/:campusId" component={SingleCampus} />
-              <Route path="/campuses/createcampus" component={CreateCampus} />
               <Route exact path="/students" component={Students} />
+              <Route path="/campuses/:campusId" component={SingleCampus} />
               <Route path="/students/:studentId" component={SingleStudent} />
             </Switch>
         </div>

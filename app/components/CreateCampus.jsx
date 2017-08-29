@@ -24,7 +24,7 @@ export default class CreateCampus extends Component{
     return (
       <div>
         <h2>CREATE NEW CAMPUS</h2>
-        <form action="">
+        <form>
             <fieldset>
               <legend>Create Campus</legend>
               <div>

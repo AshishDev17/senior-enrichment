@@ -1,32 +1,16 @@
 'use strict';
 import React, { Component } from 'react';
-import store, {fetchCampuses} from '../store';
-//import {makeVisible} from '../reducers';
-import {NavLink} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {withRouter, NavLink} from 'react-router-dom';
 
-export default class Campuses extends Component{
-  constructor(props){
-    super(props);
-    this.state = store.getState();
-  }
-
-  componentDidMount() {
-    store.dispatch(fetchCampuses());
-    this.unsubscribe = store.subscribe(() => {this.setState(store.getState())})
-  }
-
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
-
-  render() {
-    const campuses = this.state.campuses;
-    //console.log(campuses);
-    return (
+function Campuses(props) {
+  const campuses = props.campuses;
+  //console.log(campuses);
+  return (
       <div>
         <h2>Campuses</h2>
         <div>
-          <NavLink to="/campuses/createcampus">CREATE NEW CAMPUS</NavLink>
+          <NavLink to="/newCampus">CREATE NEW CAMPUS</NavLink>
         </div>
         <hr/>
         {
@@ -48,5 +32,13 @@ export default class Campuses extends Component{
         }
       </div>
     )
+}
+
+//write code for connect
+const mapStateToProps = function(state){
+  return{
+    campuses: state.campuses
   }
 }
+
+export default withRouter(connect(mapStateToProps)(Campuses));
