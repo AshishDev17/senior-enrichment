@@ -22,7 +22,7 @@ export function gotStudentsForSingleCampus(students) {
 //Thunk Creators
 export function fetchStudents(){
   return function thunk(dispatch){
-    axios.get('/api/students')
+    return axios.get('/api/students')
     .then(res => res.data)
     .then(students => dispatch(gotStudentsFromServer(students)));
   };
@@ -30,7 +30,7 @@ export function fetchStudents(){
 
 export function fetchStudentsForSingleCampus(campusId){
   return function thunk(dispatch){
-    axios.get(`/api/students/campus/${campusId}`)
+    return axios.get(`/api/students/campus/${campusId}`)
     .then(res => res.data)
     .then(students => dispatch(gotStudentsForSingleCampus(students)));
   };

@@ -11,9 +11,6 @@ module.exports = db.define('campus', {
       notEmpty: true
     }
   },
-  image: {
-    type: Sequelize.STRING
-  },
   description: {
     type: Sequelize.TEXT
   }

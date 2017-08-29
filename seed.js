@@ -5,9 +5,8 @@ const Promise = require('bluebird');
 const chalk = require('chalk');
 
 const campuses = [
-  {name: 'Campus One',
-   image: '/images/campusOne.jpg',
-   description: 'This is campus one'
+  {"name": "Campus One",
+   "description": "This is campus one"
   },
   {name: 'Campus Two',
    image: '/images/campusTwo.jpg',

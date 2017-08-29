@@ -22,18 +22,19 @@ export function addCampusToState(campus){
 //Thunk Creators
 export function fetchCampuses(){
   return function thunk(dispatch){
-    axios.get('/api/campuses')
+    return axios.get('/api/campuses')
     .then(res => res.data)
     .then(campuses => dispatch(gotCampusesFromServer(campuses)));
   };
 }
 
-export function postCampus(campus) {
+export function postCampus(campus, history) {
   return function thunk(dispatch) {
-    axios.post('/api/campuses')
+    return axios.post('/api/campuses', campus)
       .then(res => res.data)
       .then(campus => {
         dispatch(addCampusToState(campus));
+        history.push('/campuses');
       });
   }
 }
@@ -46,6 +47,7 @@ export default function reducer(state=[], action) {
     case GOT_CAMPUSES_FROM_SERVER:
       return action.campuses;
     case ADD_CAMPUS_TO_STATE:
+      //let newState = [...state, action.campus].sort((a, b) => {return a.id - b.id });
       return [...state, action.campus];
     default:
       return state;
