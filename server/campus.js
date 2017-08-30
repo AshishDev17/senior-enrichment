@@ -52,8 +52,8 @@ campusRouter.delete('/:campusId', (req, res, next) => {
       id: req.params.campusId
     }
   })
-  .then(() => {
-    res.json({message: 'DELETED'});
+  .then((data) => {
+    res.json({data});
   })
   .catch(next);
 });

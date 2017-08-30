@@ -3,6 +3,7 @@ import axios from 'axios';
 //Action Types
 const GOT_CAMPUSES_FROM_SERVER = 'GOT_CAMPUSES_FROM_SERVER';
 const ADD_CAMPUS_TO_STATE = 'ADD_CAMPUS_TO_STATE';
+const REMOVE_CAMPUS_FROM_STATE = 'REMOVE_CAMPUS_FROM_STATE';
 
 //Action Creators
 export function gotCampusesFromServer(campuses) {
@@ -16,6 +17,13 @@ export function addCampusToState(campus){
   return {
     type: ADD_CAMPUS_TO_STATE,
     campus: campus
+  }
+}
+
+export function removeCampusFromState(campusId){
+  return {
+    type: REMOVE_CAMPUS_FROM_STATE,
+    campusId: campusId
   }
 }
 
@@ -39,8 +47,17 @@ export function postCampus(campus, history) {
   }
 }
 
+export function deleteCampus(campusId){
+  return function thunk(dispatch){
+    return axios.delete(`/api/campuses/${campusId}`)
+      .then(() => {
+        dispatch(removeCampusFromState(campusId));
+      });
+  }
+}
+
 //Reducers
-export default function reducer(state=[], action) {
+export default function reducer(state, action) {
 
   switch(action.type){
 
@@ -49,7 +66,9 @@ export default function reducer(state=[], action) {
     case ADD_CAMPUS_TO_STATE:
       //let newState = [...state, action.campus].sort((a, b) => {return a.id - b.id });
       return [...state, action.campus];
+    case REMOVE_CAMPUS_FROM_STATE:
+      return state.filter(campus => campus.id !== +action.campusId);
     default:
-      return state;
+      return state || [];
   }
 }

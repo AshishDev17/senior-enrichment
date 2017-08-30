@@ -56,12 +56,18 @@ studentRouter.get('/campus/:campusId', (req, res, next) => {
 studentRouter.post('/', (req, res, next) => {
   Campus.findById(req.body.campusId)
   .then((campus) => {
-    return Student.create(req.body)
+    const createStudent = Student.create(req.body)
     .then((student) => {
       return student.setCampus(campus);
     });
+
+    return Promise.all([createStudent, campus]);
   })
-  .then(student => res.json(student))
+  .spread((student, campus) => {
+    const createdStudent = Object.assign({}, student.dataValues);
+    createdStudent.campus = campus;
+    res.json(createdStudent);
+  })
   .catch(next);
 });
 

@@ -1,6 +1,7 @@
 'use strict';
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import {deleteStudent} from '../store';
 import {withRouter, NavLink} from 'react-router-dom';
 
 function Students (props){
@@ -9,7 +10,7 @@ function Students (props){
     return (
       <div>
         <h2>ALL STUDENTS</h2>
-        <button>ADD STUDENT</button>
+        <NavLink to="/newstudent">CREATE NEW STUDENT</NavLink>
         <table>
           <thead>
             <tr>
@@ -25,7 +26,7 @@ function Students (props){
                 <td>{index + 1}</td>
                 <td><NavLink to={`/students/${student.id}`}>{student.firstName + ' ' + student.lastName}</NavLink></td>
                 <td><NavLink to={`/campuses/${student.campus.id}`}>{student.campus.name}</NavLink></td>
-                <td><button>DELETE STUDENT </button></td>
+                <td><button value={student.id} onClick={props.handleClick}>DELETE STUDENT </button></td>
               </tr>
             })
           }
@@ -42,4 +43,13 @@ const mapStateToProps = function(state){
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Students));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    handleClick(e) {
+      const studentId = e.target.value;
+      console.log(studentId);
+      dispatch(deleteStudent(studentId));
+    }
+  }
+}
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Students));
