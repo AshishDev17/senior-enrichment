@@ -36,6 +36,16 @@ module.exports = db.define('student', {
       isEmail: true
     }
   }
+}, {
+  scopes: {
+    getStudsentsWithCampuses: () => ({
+      include:[
+        {
+          model: db.model('campus')
+        }
+      ]
+    })
+  }
 });
 
 

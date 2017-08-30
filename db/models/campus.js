@@ -14,5 +14,15 @@ module.exports = db.define('campus', {
   description: {
     type: Sequelize.TEXT
   }
+}, {
+  scopes: {
+    getCampusesWithStudents: () => ({
+      include:[
+        {
+          model: db.model('student')
+        }
+      ]
+    })
+  }
 });
 

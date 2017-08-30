@@ -7,41 +7,79 @@ const Promise = require('bluebird');
 module.exports = campusRouter;
 
 // GET '/' =>  get all campuses
+// campusRouter.get('/', (req, res, next) => {
+//   Campus.findAll()
+//   .then(allCampuses => res.json(allCampuses))
+//   .catch(next);
+// });
+
+
 campusRouter.get('/', (req, res, next) => {
-  Campus.findAll()
-  .then(allCampuses => res.json(allCampuses))
+  Campus.scope('getCampusesWithStudents').findAll({})
+  .then(allCampuses => res.status(200).json(allCampuses))
   .catch(next);
 });
 
+
 // GET '/:campusId' => get campus by id
+// campusRouter.get('/:campusId', (req, res, next) => {
+//   Campus.findOne({
+//     where: {
+//       id: req.params.campusId
+//     }
+//   })
+//   .then(campus => res.json(campus))
+//   .catch(next);
+// });
+
 campusRouter.get('/:campusId', (req, res, next) => {
-  Campus.findOne({
-    where: {
-      id: req.params.campusId
-    }
+  Campus.findById(req.params.campusId)
+  .then((campus) => {
+    if(!campus) throw new Error('Campus does not exist with this id');
+    return campus.reload(Campus.options.scopes.getCampusesWithStudents());
   })
-  .then(campus => res.json(campus))
+  .then(campus => {
+    res.status(200).json(campus);
+  })
   .catch(next);
 });
 
 // POST '/' => create a new campus
+// campusRouter.post('/', (req, res, next) => {
+//   Campus.create(req.body)
+//   .then(campus => res.json(campus))
+//   .catch(next);
+// });
+
 campusRouter.post('/', (req, res, next) => {
   Campus.create(req.body)
-  .then(campus => res.json(campus))
+  .then(campus => campus.reload(Campus.options.scopes.getCampusesWithStudents()))
+  .then(campus => res.status(200).json(campus))
   .catch(next);
 });
 
 // PUT '/:studentId' => edit the campus by id
+// campusRouter.put('/:campusId', (req, res, next) => {
+//   Campus.update(req.body, {
+//     where: {
+//       id: req.params.campusId
+//     },
+//     returning: true
+//   })
+//   .spread((updateRowCount, updatedCampuses) => {
+//     res.json(updatedCampuses[0]);
+//   })
+//   .catch(next);
+// });
+
 campusRouter.put('/:campusId', (req, res, next) => {
-  Campus.update(req.body, {
-    where: {
-      id: req.params.campusId
-    },
-    returning: true
+  Campus.findById(req.params.campusId)
+  .then(campus => {
+    if(!campus) throw new Error('Campus does not exist with this id');
+    return campus.update(req.body)
   })
-  .spread((updateRowCount, updatedCampuses) => {
-    res.json(updatedCampuses[0]);
-  })
+  .then(campus => campus.reload(Campus.options.scopes.getCampusesWithStudents()))
+  .then(campus => res.status(200).json(campus))
   .catch(next);
 });
 
@@ -52,8 +90,8 @@ campusRouter.delete('/:campusId', (req, res, next) => {
       id: req.params.campusId
     }
   })
-  .then((data) => {
-    res.json({data});
+  .then(() => {
+    res.status(200).end();
   })
   .catch(next);
 });

@@ -11,7 +11,8 @@ function Campuses(props) {
       <div>
         <h2>Campuses</h2>
         <div>
-          <NavLink to="/newcampus">CREATE NEW CAMPUS</NavLink>
+          <NavLink to="/newcampus"><button>CREATE NEW CAMPUS</button></NavLink>
+          <NavLink to="/newstudent"><button>ADD NEW STUDENT</button></NavLink>
         </div>
         <hr/>
         {

@@ -10,7 +10,7 @@ function Students (props){
     return (
       <div>
         <h2>ALL STUDENTS</h2>
-        <NavLink to="/newstudent">CREATE NEW STUDENT</NavLink>
+        <NavLink to="/newstudent"><button>CREATE NEW STUDENT</button></NavLink>
         <table>
           <thead>
             <tr>

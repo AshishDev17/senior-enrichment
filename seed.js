@@ -5,19 +5,16 @@ const Promise = require('bluebird');
 const chalk = require('chalk');
 
 const campuses = [
-  {"name": "Campus One",
+  {name: "Campus One",
    "description": "This is campus one"
   },
   {name: 'Campus Two',
-   image: '/images/campusTwo.jpg',
    description: 'This is campus two'
   },
   {name: 'Campus Three',
-   image: '/images/campusThree.jpg',
    description: 'This is campus three'
   },
   {name: 'Campus Four',
-   image: '/images/campusFour.jpg',
    description: 'This is campus four'
   }
 ];
@@ -154,7 +151,7 @@ const students = [
 ];
 
 const seedDB = () => {
-  Promise.all(campuses.map((campus) => {
+  return Promise.all(campuses.map((campus) => {
     return Campus.create(campus);
   }))
   .then(() => {
@@ -167,7 +164,10 @@ const seedDB = () => {
 
 const syncDB = () => {
  console.log( chalk.blue('syncing db....'));
-  db.sync({force: true})
+  db.didSync
+  .then(() => {
+    return db.sync({force: true});
+  })
   .then(() => {
     console.log(chalk.green('seeding db....'));
     return seedDB();
@@ -175,6 +175,11 @@ const syncDB = () => {
   .catch((err) => {
     console.log(chalk.red('error while seeding'));
     console.log(err.stack);
+  })
+  .then(() => {
+    console.log(chalk.green("before closing db"));
+    db.close();
+    return null;
   });
 };
 

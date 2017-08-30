@@ -4,6 +4,7 @@ import axios from 'axios';
 const GOT_CAMPUSES_FROM_SERVER = 'GOT_CAMPUSES_FROM_SERVER';
 const ADD_CAMPUS_TO_STATE = 'ADD_CAMPUS_TO_STATE';
 const REMOVE_CAMPUS_FROM_STATE = 'REMOVE_CAMPUS_FROM_STATE';
+//const EDIT_CAMPUS_IN_STATE = 'EDIT_CAMPUS_IN_STATE';
 
 //Action Creators
 export function gotCampusesFromServer(campuses) {
@@ -26,6 +27,13 @@ export function removeCampusFromState(campusId){
     campusId: campusId
   }
 }
+
+// export function editCampusInState(campus){
+//   return {
+//     type: EDIT_CAMPUS_IN_STATE,
+//     campus: campus
+//   }
+// }
 
 //Thunk Creators
 export function fetchCampuses(){
@@ -56,6 +64,8 @@ export function deleteCampus(campusId){
   }
 }
 
+
+
 //Reducers
 export default function reducer(state, action) {
 
@@ -68,6 +78,8 @@ export default function reducer(state, action) {
       return [...state, action.campus];
     case REMOVE_CAMPUS_FROM_STATE:
       return state.filter(campus => campus.id !== +action.campusId);
+    // case EDIT_CAMPUS_IN_STATE:
+    //   return state.filter(campus => campus.id !== +action.campusId);
     default:
       return state || [];
   }

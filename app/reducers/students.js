@@ -2,7 +2,7 @@ import axios from 'axios';
 
 //Action Types
 const GOT_STUDENTS_FROM_SERVER = 'GOT_STUDENTS_FROM_SERVER';
-const GOT_STUDENTS_FOR_SINGLE_CAMPUS = 'GOT_STUDENTS_FOR_SINGLE_CAMPUS';
+//const GOT_STUDENTS_FOR_SINGLE_CAMPUS = 'GOT_STUDENTS_FOR_SINGLE_CAMPUS';
 const ADD_STUDENT_TO_STATE = 'ADD_STUDENT_TO_STATE';
 const REMOVE_STUDENT_FROM_STATE = 'REMOVE_STUDENT_FROM_STATE';
 
@@ -14,12 +14,12 @@ export function gotStudentsFromServer(students) {
   };
 }
 
-export function gotStudentsForSingleCampus(students) {
-  return {
-    type: GOT_STUDENTS_FOR_SINGLE_CAMPUS,
-    students: students
-  };
-}
+// export function gotStudentsForSingleCampus(students) {
+//   return {
+//     type: GOT_STUDENTS_FOR_SINGLE_CAMPUS,
+//     students: students
+//   };
+// }
 
 export function addStudentToState(student) {
   return {
@@ -44,20 +44,20 @@ export function fetchStudents(){
   };
 }
 
-export function fetchStudentsForSingleCampus(campusId){
-  return function thunk(dispatch){
-    return axios.get(`/api/students/campus/${campusId}`)
-    .then(res => res.data)
-    .then(students => dispatch(gotStudentsForSingleCampus(students)));
-  };
-}
+// export function fetchStudentsForSingleCampus(campusId){
+//   return function thunk(dispatch){
+//     return axios.get(`/api/students/campus/${campusId}`)
+//     .then(res => res.data)
+//     .then(students => dispatch(gotStudentsForSingleCampus(students)));
+//   };
+// }
 
 export function postStudent(student, history){
   return function thunk(dispatch){
     return axios.post('/api/students', student)
       .then(res => res.data)
       .then(student => {
-        console.log('got from server after posting', student);
+        //console.log('got from server after posting', student);
         dispatch(addStudentToState(student));
         history.push(`/students/${student.id}`);
       })
@@ -80,8 +80,8 @@ export default function reducer(state, action) {
 
     case GOT_STUDENTS_FROM_SERVER:
       return action.students;
-    case GOT_STUDENTS_FOR_SINGLE_CAMPUS:
-      return action.students;
+    // case GOT_STUDENTS_FOR_SINGLE_CAMPUS:
+    //   return action.students;
     case ADD_STUDENT_TO_STATE:
       return [...state, action.student];
     case REMOVE_STUDENT_FROM_STATE:
