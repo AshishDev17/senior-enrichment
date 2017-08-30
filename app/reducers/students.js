@@ -5,6 +5,7 @@ const GOT_STUDENTS_FROM_SERVER = 'GOT_STUDENTS_FROM_SERVER';
 //const GOT_STUDENTS_FOR_SINGLE_CAMPUS = 'GOT_STUDENTS_FOR_SINGLE_CAMPUS';
 const ADD_STUDENT_TO_STATE = 'ADD_STUDENT_TO_STATE';
 const REMOVE_STUDENT_FROM_STATE = 'REMOVE_STUDENT_FROM_STATE';
+const EDIT_STUDENT_IN_STATE = 'EDIT_STUDENT_IN_STATE';
 
 //Action Creators
 export function gotStudentsFromServer(students) {
@@ -32,6 +33,13 @@ export function removeStudentFromState(studentId){
   return {
     type: REMOVE_STUDENT_FROM_STATE,
     studentId: studentId
+  }
+}
+
+export function editStudentInState(student){
+  return {
+    type: EDIT_STUDENT_IN_STATE,
+    student: student
   }
 }
 
@@ -73,6 +81,18 @@ export function deleteStudent(studentId){
   }
 }
 
+export function editStudent(id, student, history){
+  return function thunk(dispatch) {
+    return axios.put(`/api/students/${id}`, student)
+      .then(res => res.data)
+      .then(student => {
+        console.log('student after updated', student);
+        dispatch(editStudentInState(student));
+        history.push(`/students/${student.id}`);
+      });
+  }
+}
+
 //Reducers
 export default function reducer(state, action) {
 
@@ -86,6 +106,8 @@ export default function reducer(state, action) {
       return [...state, action.student];
     case REMOVE_STUDENT_FROM_STATE:
       return state.filter(student => student.id !== +action.studentId);
+    case EDIT_STUDENT_IN_STATE:
+      return state.map(student => student.id === action.student.id ? action.student : student);
     default:
       return state || [];
   }

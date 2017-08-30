@@ -45,7 +45,7 @@ function CreateStudent(props) {
                 </select>
               </div>
               <div>
-                <input type="submit" value="Submit Campus"/>
+                <input type="submit" value="Submit Student"/>
               </div>
             </fieldset>
           </form>

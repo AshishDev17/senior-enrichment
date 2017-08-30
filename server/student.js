@@ -112,9 +112,10 @@ studentRouter.put('/:studentId', (req, res, next) => {
   Student.findById(req.params.studentId)
   .then(student => {
     if(!student) throw new Error('Student does not exist with this id');
-    return student.reload(Student.options.scopes.getStudsentsWithCampuses());
+    return student.update(req.body);
   })
-  .then(student => res.send(200).json(student))
+  .then(student => student.reload(Student.options.scopes.getStudsentsWithCampuses()))
+  .then(student => res.status(200).json(student))
   .catch(next);
 });
 
