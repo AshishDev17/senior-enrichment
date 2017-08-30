@@ -9,6 +9,8 @@ import Students from './Students';
 import SingleStudent from './SingleStudent';
 import CreateCampus from './CreateCampus';
 import CreateStudent from './CreateStudent';
+import EditCampus from './EditCampus';
+import EditStudent from './EditStudent';
 
 
 export default class Root extends Component {
@@ -30,6 +32,8 @@ export default class Root extends Component {
               <Route exact path="/home" component={Campuses} />
               <Route path="/newcampus" component={CreateCampus} />
               <Route path="/newstudent" component={CreateStudent} />
+              <Route path="/editcampus/:campusId" component={EditCampus} />
+              <Route path="/editstudent/:studentId" component={EditStudent} />
               <Route exact path="/campuses" component={Campuses} />
               <Route exact path="/students" component={Students} />
               <Route path="/campuses/:campusId" component={SingleCampus} />

@@ -4,7 +4,7 @@ import axios from 'axios';
 const GOT_CAMPUSES_FROM_SERVER = 'GOT_CAMPUSES_FROM_SERVER';
 const ADD_CAMPUS_TO_STATE = 'ADD_CAMPUS_TO_STATE';
 const REMOVE_CAMPUS_FROM_STATE = 'REMOVE_CAMPUS_FROM_STATE';
-//const EDIT_CAMPUS_IN_STATE = 'EDIT_CAMPUS_IN_STATE';
+const EDIT_CAMPUS_IN_STATE = 'EDIT_CAMPUS_IN_STATE';
 
 //Action Creators
 export function gotCampusesFromServer(campuses) {
@@ -28,12 +28,12 @@ export function removeCampusFromState(campusId){
   }
 }
 
-// export function editCampusInState(campus){
-//   return {
-//     type: EDIT_CAMPUS_IN_STATE,
-//     campus: campus
-//   }
-// }
+export function editCampusInState(campus){
+  return {
+    type: EDIT_CAMPUS_IN_STATE,
+    campus: campus
+  }
+}
 
 //Thunk Creators
 export function fetchCampuses(){
@@ -64,6 +64,17 @@ export function deleteCampus(campusId){
   }
 }
 
+export function editCampus(id, campus, history){
+  return function thunk(dispatch){
+    return axios.put(`/api/campuses/${id}`, campus)
+      .then(res => res.data)
+      .then(campus => {
+        dispatch(editCampusInState(campus));
+        history.push(`/campuses/${campus.id}`);
+      });
+  }
+}
+
 
 
 //Reducers
@@ -78,8 +89,8 @@ export default function reducer(state, action) {
       return [...state, action.campus];
     case REMOVE_CAMPUS_FROM_STATE:
       return state.filter(campus => campus.id !== +action.campusId);
-    // case EDIT_CAMPUS_IN_STATE:
-    //   return state.filter(campus => campus.id !== +action.campusId);
+    case EDIT_CAMPUS_IN_STATE:
+      return state.map(campus => campus.id === action.campus.id ? action.campus : campus);
     default:
       return state || [];
   }

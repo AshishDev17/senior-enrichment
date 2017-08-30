@@ -14,7 +14,7 @@ function SingleCampus(props) {
       return (
         <div>
           <h2>{campus.name}</h2>
-          <button> EDIT CAMPUS</button>
+          <NavLink to={`/editcampus/${campus.id}`}><button> EDIT CAMPUS</button></NavLink>
           <table>
             <thead>
               <tr>
