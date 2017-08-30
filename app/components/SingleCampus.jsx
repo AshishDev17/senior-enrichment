@@ -10,31 +10,37 @@ function SingleCampus(props) {
   const campus = props.campus;
   console.log(campus);
 
-     return (
-      <div>
-        <h2>{campus.name}</h2>
-        <button> EDIT CAMPUS</button>
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Student Name </th>
-            </tr>
-          </thead>
-          <tbody>
-              {
-              campus.students.map((student, index) => {
-                return <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td><NavLink to={`/students/${student.id}`}>{student.firstName + ' ' + student.lastName}</NavLink></td>
-                  <td><button value={student.id} onClick={props.handleClick}>DELETE STUDENT </button></td>
-                </tr>
-              })
-            }
-          </tbody>
-        </table>
-      </div>
-    )
+    if(campus){
+      return (
+        <div>
+          <h2>{campus.name}</h2>
+          <button> EDIT CAMPUS</button>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Student Name </th>
+              </tr>
+            </thead>
+            <tbody>
+                {
+                campus.students.map((student, index) => {
+                  return <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td><NavLink to={`/students/${student.id}`}>{student.firstName + ' ' + student.lastName}</NavLink></td>
+                    <td><button value={student.id} onClick={props.handleClick}>DELETE STUDENT </button></td>
+                  </tr>
+                })
+              }
+            </tbody>
+          </table>
+        </div>
+      )
+    }
+    else{
+      return <div></div>
+    }
+
   };
 
 
