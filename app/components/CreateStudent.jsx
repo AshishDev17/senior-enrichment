@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 
 function CreateStudent(props) {
   const campuses = props.campuses;
-  console.log(campuses);
+
   return (
       <div>
         <h2>CREATE NEW STUDENT</h2>
@@ -71,8 +71,6 @@ const mapDispatchToProps = function(dispatch, ownProps){
         email: e.target.studentEmail.value,
         campusId: e.target.campusName.value
       }
-
-      //console.log(student);
 
       dispatch(postStudent(student, ownProps.history));
     }

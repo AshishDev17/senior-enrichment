@@ -7,13 +7,6 @@ const Promise = require('bluebird');
 module.exports = campusRouter;
 
 // GET '/' =>  get all campuses
-// campusRouter.get('/', (req, res, next) => {
-//   Campus.findAll()
-//   .then(allCampuses => res.json(allCampuses))
-//   .catch(next);
-// });
-
-
 campusRouter.get('/', (req, res, next) => {
   Campus.scope('getCampusesWithStudents').findAll({})
   .then(allCampuses => res.status(200).json(allCampuses))
@@ -22,16 +15,6 @@ campusRouter.get('/', (req, res, next) => {
 
 
 // GET '/:campusId' => get campus by id
-// campusRouter.get('/:campusId', (req, res, next) => {
-//   Campus.findOne({
-//     where: {
-//       id: req.params.campusId
-//     }
-//   })
-//   .then(campus => res.json(campus))
-//   .catch(next);
-// });
-
 campusRouter.get('/:campusId', (req, res, next) => {
   Campus.findById(req.params.campusId)
   .then((campus) => {
@@ -45,12 +28,6 @@ campusRouter.get('/:campusId', (req, res, next) => {
 });
 
 // POST '/' => create a new campus
-// campusRouter.post('/', (req, res, next) => {
-//   Campus.create(req.body)
-//   .then(campus => res.json(campus))
-//   .catch(next);
-// });
-
 campusRouter.post('/', (req, res, next) => {
   Campus.create(req.body)
   .then(campus => campus.reload(Campus.options.scopes.getCampusesWithStudents()))
@@ -59,19 +36,6 @@ campusRouter.post('/', (req, res, next) => {
 });
 
 // PUT '/:studentId' => edit the campus by id
-// campusRouter.put('/:campusId', (req, res, next) => {
-//   Campus.update(req.body, {
-//     where: {
-//       id: req.params.campusId
-//     },
-//     returning: true
-//   })
-//   .spread((updateRowCount, updatedCampuses) => {
-//     res.json(updatedCampuses[0]);
-//   })
-//   .catch(next);
-// });
-
 campusRouter.put('/:campusId', (req, res, next) => {
   Campus.findById(req.params.campusId)
   .then(campus => {

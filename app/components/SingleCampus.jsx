@@ -5,16 +5,14 @@ import {deleteStudent} from '../store';
 import {withRouter, NavLink} from 'react-router-dom';
 
 function SingleCampus(props) {
-  //const students = props.students;
-  //console.log(students);
   const campus = props.campus;
-  console.log(campus);
 
     if(campus){
       return (
         <div>
           <h2>{campus.name}</h2>
           <NavLink to={`/editcampus/${campus.id}`}><button> EDIT CAMPUS</button></NavLink>
+          <NavLink to="/newstudent"><button>ADD NEW STUDENT</button></NavLink>
           <table>
             <thead>
               <tr>
@@ -49,11 +47,7 @@ const mapStateToProps = function(state, ownProps){
   const campusId = ownProps.match.params.campusId;
 
   return{
-    // students: state.students.filter((student) => {
-    //   return student.campus.id === +campusId;
-    // })
-
-    campus: state.campuses.find(campus => campus.id === +campusId)
+        campus: state.campuses.find(campus => campus.id === +campusId)
   }
 }
 
@@ -61,9 +55,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     handleClick(e) {
       const studentId = e.target.value;
-      console.log(studentId);
       dispatch(deleteStudent(studentId));
-      //ownProps.history.push('/campuses')
     }
   }
 }

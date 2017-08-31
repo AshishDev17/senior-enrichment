@@ -6,7 +6,6 @@ import {withRouter, NavLink} from 'react-router-dom';
 
 function Campuses(props) {
   const campuses = props.campuses;
-  //console.log(campuses);
   return (
       <div>
         <h2>Campuses</h2>
@@ -36,7 +35,6 @@ function Campuses(props) {
     )
 }
 
-//write code for connect
 const mapStateToProps = (state) => {
   return{
     campuses: state.campuses

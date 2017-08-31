@@ -163,9 +163,10 @@ const seedDB = () => {
 };
 
 const syncDB = () => {
- console.log( chalk.blue('syncing db....'));
+
   db.didSync
   .then(() => {
+    console.log( chalk.blue('syncing db....'));
     return db.sync({force: true});
   })
   .then(() => {

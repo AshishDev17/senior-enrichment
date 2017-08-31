@@ -7,8 +7,6 @@ import {connect} from 'react-redux';
 function CreateStudent(props) {
   const campuses = props.campuses;
   const student = props.student;
-  console.log(campuses);
-  console.log(student);
 
   if(student){
     return (
@@ -83,8 +81,6 @@ const mapDispatchToProps = function(dispatch, ownProps){
         email: e.target.studentEmail.value,
         campusId: e.target.campusName.value
       }
-
-      console.log(student);
 
       dispatch(editStudent(studentId, student, ownProps.history));
     }

@@ -85,7 +85,6 @@ export default function reducer(state, action) {
     case GOT_CAMPUSES_FROM_SERVER:
       return action.campuses;
     case ADD_CAMPUS_TO_STATE:
-      //let newState = [...state, action.campus].sort((a, b) => {return a.id - b.id });
       return [...state, action.campus];
     case REMOVE_CAMPUS_FROM_STATE:
       return state.filter(campus => campus.id !== +action.campusId);

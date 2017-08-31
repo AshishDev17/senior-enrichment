@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 
 function EditCampus (props) {
   const campus = props.campus;
-  console.log(campus);
 
   if(campus){
     return (
@@ -53,7 +52,6 @@ const mapDispatchToProps = function (dispatch, ownProps) {
       e.preventDefault();
       let campusName = e.target.campusName.value || '';
       let campusDescription = e.target.campusDescription.value || '';
-      console.log({name: campusName, description: campusDescription});
 
       dispatch(editCampus(campusId, {name: campusName, description: campusDescription}, ownProps.history));
     }

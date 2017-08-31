@@ -2,7 +2,6 @@ import axios from 'axios';
 
 //Action Types
 const GOT_STUDENTS_FROM_SERVER = 'GOT_STUDENTS_FROM_SERVER';
-//const GOT_STUDENTS_FOR_SINGLE_CAMPUS = 'GOT_STUDENTS_FOR_SINGLE_CAMPUS';
 const ADD_STUDENT_TO_STATE = 'ADD_STUDENT_TO_STATE';
 const REMOVE_STUDENT_FROM_STATE = 'REMOVE_STUDENT_FROM_STATE';
 const EDIT_STUDENT_IN_STATE = 'EDIT_STUDENT_IN_STATE';
@@ -14,13 +13,6 @@ export function gotStudentsFromServer(students) {
     students: students
   };
 }
-
-// export function gotStudentsForSingleCampus(students) {
-//   return {
-//     type: GOT_STUDENTS_FOR_SINGLE_CAMPUS,
-//     students: students
-//   };
-// }
 
 export function addStudentToState(student) {
   return {
@@ -51,14 +43,6 @@ export function fetchStudents(){
     .then(students => dispatch(gotStudentsFromServer(students)));
   };
 }
-
-// export function fetchStudentsForSingleCampus(campusId){
-//   return function thunk(dispatch){
-//     return axios.get(`/api/students/campus/${campusId}`)
-//     .then(res => res.data)
-//     .then(students => dispatch(gotStudentsForSingleCampus(students)));
-//   };
-// }
 
 export function postStudent(student, history){
   return function thunk(dispatch){
@@ -100,8 +84,6 @@ export default function reducer(state, action) {
 
     case GOT_STUDENTS_FROM_SERVER:
       return action.students;
-    // case GOT_STUDENTS_FOR_SINGLE_CAMPUS:
-    //   return action.students;
     case ADD_STUDENT_TO_STATE:
       return [...state, action.student];
     case REMOVE_STUDENT_FROM_STATE:

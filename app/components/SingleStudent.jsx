@@ -5,7 +5,7 @@ import {withRouter, NavLink} from 'react-router-dom';
 
 function SingleStudent(props) {
   let student = props.singleStudent;
-  //console.log(student);
+
   if(student){
     return (
       <div>
@@ -33,7 +33,7 @@ function SingleStudent(props) {
 
 const mapStateToProps = function(state, ownProps){
   const studentId = ownProps.match.params.studentId;
-  console.log('what is state?', state);
+
   return{
     singleStudent: state.students.find((student) => {
       return student.id === +studentId;

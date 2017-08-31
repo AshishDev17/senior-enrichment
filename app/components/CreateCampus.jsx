@@ -40,7 +40,6 @@ const mapDispatchToProps = function (dispatch, ownProps) {
       e.preventDefault();
       let campusName = e.target.campusName.value || '';
       let campusDescription = e.target.campusDescription.value || '';
-      console.log({name: campusName, description: campusDescription});
 
       dispatch(postCampus({name: campusName, description: campusDescription}, ownProps.history));
     }

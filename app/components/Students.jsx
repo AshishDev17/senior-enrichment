@@ -6,7 +6,7 @@ import {withRouter, NavLink} from 'react-router-dom';
 
 function Students (props){
   const students = props.students;
-    //console.log(students);
+
     return (
       <div>
         <h2>ALL STUDENTS</h2>
@@ -36,7 +36,6 @@ function Students (props){
     )
 }
 
-//write code for connect
 const mapStateToProps = function(state){
   return{
     students: state.students
@@ -47,7 +46,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleClick(e) {
       const studentId = e.target.value;
-      console.log(studentId);
       dispatch(deleteStudent(studentId));
     }
   }
