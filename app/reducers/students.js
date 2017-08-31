@@ -78,7 +78,7 @@ export function editStudent(id, student, history){
 }
 
 //Reducers
-export default function reducer(state, action) {
+export default function reducer(state=[], action) {
 
   switch(action.type){
 
@@ -91,6 +91,6 @@ export default function reducer(state, action) {
     case EDIT_STUDENT_IN_STATE:
       return state.map(student => student.id === action.student.id ? action.student : student);
     default:
-      return state || [];
+      return state;
   }
 }
