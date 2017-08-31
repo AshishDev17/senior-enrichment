@@ -13,29 +13,29 @@ function CreateStudent(props) {
         <form onSubmit={props.handleSubmit}>
             <fieldset>
               <legend>Create Student</legend>
-              <div>
+              <div className="form-group">
                 <label htmlFor="">Student First Name: </label>
-                <input type="text" name="studentFirstName"/>
+                <input type="text" className="form-control" name="studentFirstName"/>
               </div>
-              <div>
+              <div className="form-group">
                 <label htmlFor="">Student Last Name: </label>
-                <input type="text" name="studentLastName"/>
+                <input type="text" className="form-control" name="studentLastName"/>
               </div>
-              <div>
+              <div className="form-group">
                 <label htmlFor="">Student Age: </label>
-                <input type="text" name="studentAge"/>
+                <input type="text" className="form-control" name="studentAge"/>
               </div>
-              <div>
+              <div className="form-group">
                 <label htmlFor="">Student Gender: </label>
-                <input type="text" name="studentGender"/>
+                <input type="text" className="form-control" name="studentGender"/>
               </div>
-              <div>
+              <div className="form-group">
                 <label htmlFor="">Student Email: </label>
-                <input type="text" name="studentEmail"/>
+                <input type="email" className="form-control" name="studentEmail"/>
               </div>
-              <div>
+              <div className="form-group">
                 <label htmlFor="">Campus Name: </label>
-                <select name="campusName">
+                <select name="campusName" className="form-control">
                   {
                     campuses.map((campus) => {
                       return <option key={campus.id} value={campus.id}>{campus.name}</option>
@@ -45,7 +45,7 @@ function CreateStudent(props) {
                 </select>
               </div>
               <div>
-                <input type="submit" value="Submit Student"/>
+                <input type="submit"className="btn btn-primary"  value="Submit Student"/>
               </div>
             </fieldset>
           </form>

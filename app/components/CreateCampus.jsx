@@ -11,16 +11,16 @@ function CreateCampus (props) {
         <form onSubmit={props.handleSubmit}>
             <fieldset>
               <legend>Create Campus</legend>
-              <div>
+              <div className="form-group">
                 <label htmlFor="">Campus Name: </label>
-                <input type="text" name="campusName"/>
+                <input type="text" className="form-control" name="campusName"/>
               </div>
-              <div>
+              <div className="form-group">
                 <label htmlFor="">Campus Description: </label>
-                <input type="text" name="campusDescription"/>
+                <input type="text" className="form-control" name="campusDescription"/>
               </div>
               <div>
-                <input type="submit" value="Submit Campus"/>
+                <input type="submit" className="btn btn-primary" value="Submit Campus"/>
               </div>
             </fieldset>
           </form>
