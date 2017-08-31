@@ -1,65 +1,70 @@
 'use strict';
 import React, { Component } from 'react';
-import {editStudent} from '../store';
-import {withRouter, NavLink} from 'react-router-dom';
-import {connect} from 'react-redux';
+import { editStudent } from '../store';
+import { withRouter, NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 function CreateStudent(props) {
   const campuses = props.campuses;
   const student = props.student;
 
-  if(student){
+  if (student) {
     return (
       <div>
-        <h2>EDIT NEW STUDENT</h2>
-        <form onSubmit={props.handleSubmit}>
-            <fieldset>
-              <legend>Edit Student</legend>
-              <div>
-                <label htmlFor="">Student First Name: </label>
-                <input type="text" name="studentFirstName" defaultValue={student.firstName}/>
-              </div>
-              <div>
-                <label htmlFor="">Student Last Name: </label>
-                <input type="text" name="studentLastName" defaultValue={student.lastName}/>
-              </div>
-              <div>
-                <label htmlFor="">Student Age: </label>
-                <input type="text" name="studentAge" defaultValue={student.age}/>
-              </div>
-              <div>
-                <label htmlFor="">Student Gender: </label>
-                <input type="text" name="studentGender" defaultValue={student.gender}/>
-              </div>
-              <div>
-                <label htmlFor="">Student Email: </label>
-                <input type="text" name="studentEmail" defaultValue={student.email}/>
-              </div>
-              <div>
-                <label htmlFor="">Campus Name: </label>
-                <select name="campusName" defaultValue={student.campus.id}>
-                  {
-                    campuses.map((campus) => {
-                      return <option key={campus.id} value={campus.id}>{campus.name}</option>
-                    })
-                  }
-                </select>
-              </div>
-              <div>
-                <input type="submit" value="Submit Student"/>
-              </div>
-            </fieldset>
-          </form>
+        <div className="heading"><h2>EDIT NEW STUDENT</h2></div>
+        <div className="row">
+          <div className="col-xs-offset-3 form-width">
+            <form onSubmit={props.handleSubmit}>
+              <fieldset>
+                <div className="form-group">
+                  <label htmlFor="">Student First Name: </label>
+                  <input type="text" className="form-control" name="studentFirstName" defaultValue={student.firstName} />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="">Student Last Name: </label>
+                  <input type="text" className="form-control" name="studentLastName" defaultValue={student.lastName} />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="">Student Age: </label>
+                  <input type="text" className="form-control" name="studentAge" defaultValue={student.age} />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="">Student Gender: </label>
+                  <input type="text" className="form-control" name="studentGender" defaultValue={student.gender} />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="">Student Email: </label>
+                  <input type="text" className="form-control" name="studentEmail" defaultValue={student.email} />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="">Campus Name: </label>
+                  <select name="campusName" className="form-control" defaultValue={student.campus.id}>
+                    {
+                      campuses.map((campus) => {
+                        return <option key={campus.id} value={campus.id}>{campus.name}</option>
+                      })
+                    }
+                  </select>
+                </div>
+                <div className="form-group">
+                  <input type="submit" className="btn btn-primary" value="Submit Student" />
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+
+
       </div>
     )
   }
-  else{
+  else {
     return <div></div>
   }
 
 }
 
-const mapStateToProps = function(state, ownProps){
+const mapStateToProps = function (state, ownProps) {
   const studentId = ownProps.match.params.studentId;
   return {
     campuses: state.campuses,
@@ -67,7 +72,7 @@ const mapStateToProps = function(state, ownProps){
   }
 }
 
-const mapDispatchToProps = function(dispatch, ownProps){
+const mapDispatchToProps = function (dispatch, ownProps) {
   const studentId = ownProps.match.params.studentId;
 
   return {

@@ -1,0 +1,24 @@
+.container h2 {
+  text-align: center;
+  font-size: 40px;
+}
+
+.container {
+  margin-bottom: 4%;
+}
+
+.heading {
+  height: 100px;
+  width: 100%;
+  font-size: 30px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.spacing {
+  margin: 2% 0;
+}
+
+.form-width {
+  width: 50%;
+}

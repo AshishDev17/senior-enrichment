@@ -1,31 +1,34 @@
 'use strict';
 import React, { Component } from 'react';
-import {postCampus} from '../store';
-import {withRouter, NavLink} from 'react-router-dom';
-import {connect} from 'react-redux';
+import { postCampus } from '../store';
+import { withRouter, NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-function CreateCampus (props) {
-     return (
-      <div>
-        <h2>CREATE NEW CAMPUS</h2>
-        <form onSubmit={props.handleSubmit}>
+function CreateCampus(props) {
+  return (
+    <div>
+      <h2 className="heading">CREATE NEW CAMPUS</h2>
+      <div className="row">
+        <div className="col-xs-offset-3 form-width">
+          <form onSubmit={props.handleSubmit}>
             <fieldset>
-              <legend>Create Campus</legend>
               <div className="form-group">
                 <label htmlFor="">Campus Name: </label>
-                <input type="text" className="form-control" name="campusName"/>
+                <input type="text" className="form-control" name="campusName" />
               </div>
               <div className="form-group">
                 <label htmlFor="">Campus Description: </label>
-                <input type="text" className="form-control" name="campusDescription"/>
+                <input type="text" className="form-control" name="campusDescription" />
               </div>
               <div>
-                <input type="submit" className="btn btn-primary" value="Submit Campus"/>
+                <input type="submit" className="btn btn-primary" value="Submit Campus" />
               </div>
             </fieldset>
           </form>
+        </div>
       </div>
-    )
+    </div>
+  )
 }
 
 const mapStateToProps = function (state, ownprops) {
@@ -36,12 +39,12 @@ const mapStateToProps = function (state, ownprops) {
 
 const mapDispatchToProps = function (dispatch, ownProps) {
   return {
-    handleSubmit (e) {
+    handleSubmit(e) {
       e.preventDefault();
       let campusName = e.target.campusName.value || '';
       let campusDescription = e.target.campusDescription.value || '';
 
-      dispatch(postCampus({name: campusName, description: campusDescription}, ownProps.history));
+      dispatch(postCampus({ name: campusName, description: campusDescription }, ownProps.history));
     }
   }
 }
