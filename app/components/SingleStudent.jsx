@@ -9,19 +9,31 @@ function SingleStudent(props) {
   if(student){
     return (
       <div>
-        <h3>{student.firstName + ' ' + student.lastName}'s Page</h3>
-        <NavLink to={`/editstudent/${student.id}`}><button>EDIT STUDENT</button></NavLink>
-        <div>
-          <label htmlFor="">Student Name: </label>
-          <h4>{student.firstName + ' ' + student.lastName}</h4>
-        </div>
-        <div>
-          <label htmlFor="">Student Email: </label>
-          <h4>{student.email}</h4>
-        </div>
-        <div>
-          <label htmlFor="">Campus Name: </label>
-          <NavLink to={`/campuses/${student.campus.id}`}>{student.campus.name}</NavLink>
+        <div className="heading"><h3>{student.firstName + ' ' + student.lastName}'s Page</h3></div>
+        <NavLink to={`/editstudent/${student.id}`}><button className="btn btn-info">EDIT STUDENT</button></NavLink>
+        <div className="spacing">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Campus Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{student.firstName}</td>
+                <td>{student.lastName}</td>
+                <td>{student.age}</td>
+                <td>{student.gender}</td>
+                <td>{student.email}</td>
+                <td><NavLink to={`/campuses/${student.campus.id}`}>{student.campus.name}</NavLink></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     )

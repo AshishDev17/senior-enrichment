@@ -10,10 +10,14 @@ function SingleCampus(props) {
     if(campus){
       return (
         <div>
-          <h2>{campus.name}</h2>
-          <NavLink to={`/editcampus/${campus.id}`}><button> EDIT CAMPUS</button></NavLink>
-          <NavLink to="/newstudent"><button>ADD NEW STUDENT</button></NavLink>
-          <table>
+          <div className="heading">
+            <h2>{campus.name}</h2>
+          </div>
+          <div className="row">
+            <div className="col-xs-3 text-center"><NavLink to={`/editcampus/${campus.id}`}><button className="btn btn-info"> EDIT CAMPUS</button></NavLink></div>
+            <div className="col-xs-offset-2 col-xs-3 text-center"><NavLink to="/newstudent"><button className="btn btn-info">ADD NEW STUDENT</button></NavLink></div>
+          </div>
+          <table className="table table-margin">
             <thead>
               <tr>
                 <th>#</th>
@@ -26,7 +30,7 @@ function SingleCampus(props) {
                   return <tr key={index}>
                     <td>{index + 1}</td>
                     <td><NavLink to={`/students/${student.id}`}>{student.firstName + ' ' + student.lastName}</NavLink></td>
-                    <td><button value={student.id} onClick={props.handleClick}>DELETE STUDENT </button></td>
+                    <td><button value={student.id} onClick={props.handleClick} className="btn btn-danger">>DELETE STUDENT </button></td>
                   </tr>
                 })
               }
