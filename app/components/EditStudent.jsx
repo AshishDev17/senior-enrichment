@@ -17,27 +17,27 @@ function CreateStudent(props) {
             <form onSubmit={props.handleSubmit}>
               <fieldset>
                 <div className="form-group">
-                  <label htmlFor="">Student First Name: </label>
+                  <label>Student First Name: </label>
                   <input type="text" className="form-control" name="studentFirstName" defaultValue={student.firstName} />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="">Student Last Name: </label>
+                  <label>Student Last Name: </label>
                   <input type="text" className="form-control" name="studentLastName" defaultValue={student.lastName} />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="">Student Age: </label>
+                  <label>Student Age: </label>
                   <input type="text" className="form-control" name="studentAge" defaultValue={student.age} />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="">Student Gender: </label>
+                  <label>Student Gender: </label>
                   <input type="text" className="form-control" name="studentGender" defaultValue={student.gender} />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="">Student Email: </label>
+                  <label>Student Email: </label>
                   <input type="text" className="form-control" name="studentEmail" defaultValue={student.email} />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="">Campus Name: </label>
+                  <label>Campus Name: </label>
                   <select name="campusName" className="form-control" defaultValue={student.campus.id}>
                     {
                       campuses.map((campus) => {

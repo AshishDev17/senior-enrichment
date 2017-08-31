@@ -57,11 +57,13 @@ function SingleCampus(props) {
 const mapStateToProps = function(state, ownProps){
   const campusId = ownProps.match.params.campusId;
   //get all students from students state whose campusId is equal to campusId passed in params
-  let students = state.students.filter(student => student.campusId === +campusId);
+  const students = state.students.filter(student => student.campusId === +campusId);
   //get campus from campuses state whose id is equal to campusId passed in params
-  let campus=  state.campuses.find(campus => campus.id === +campusId);
+  const campus=  state.campuses.find(campus => campus.id === +campusId);
   //replacing the old students array of the campus with the new students array that have the new added student
-  campus.students = students;
+  if(campus){
+    campus.students = students;
+  }
 
   return{
         campus: campus

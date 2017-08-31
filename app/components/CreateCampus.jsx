@@ -13,11 +13,11 @@ function CreateCampus(props) {
           <form onSubmit={props.handleSubmit}>
             <fieldset>
               <div className="form-group">
-                <label htmlFor="">Campus Name: </label>
+                <label>Campus Name: </label>
                 <input type="text" className="form-control" name="campusName" />
               </div>
               <div className="form-group">
-                <label htmlFor="">Campus Description: </label>
+                <label>Campus Description: </label>
                 <input type="text" className="form-control" name="campusDescription" />
               </div>
               <div>
