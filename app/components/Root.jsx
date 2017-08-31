@@ -29,7 +29,7 @@ export default class Root extends Component {
           </div>
           <div className="container-fluid">
             <Switch>
-              <Route exact path="/home" component={Campuses} />
+              <Route exact path="/" component={Campuses} />
               <Route path="/newcampus" component={CreateCampus} />
               <Route path="/newstudent" component={CreateStudent} />
               <Route path="/editcampus/:campusId" component={EditCampus} />

@@ -14,14 +14,17 @@ function SingleCampus(props) {
             <h2>{campus.name}</h2>
           </div>
           <div className="row">
-            <div className="col-xs-3 text-center"><NavLink to={`/editcampus/${campus.id}`}><button className="btn btn-info"> EDIT CAMPUS</button></NavLink></div>
-            <div className="col-xs-offset-2 col-xs-3 text-center"><NavLink to="/newstudent"><button className="btn btn-info">ADD NEW STUDENT</button></NavLink></div>
+            <div className="col-xs-3"><NavLink to={`/editcampus/${campus.id}`}><button className="btn btn-info"> EDIT CAMPUS</button></NavLink></div>
+            <div className="col-xs-offset-6 col-xs-3"><NavLink to="/newstudent"><button className="btn btn-info">ADD NEW STUDENT</button></NavLink></div>
           </div>
           <table className="table table-margin">
             <thead>
               <tr>
                 <th>#</th>
                 <th>Student Name </th>
+                <th>Student Age</th>
+                <th>Student Gender</th>
+                <th>Student Email</th>
               </tr>
             </thead>
             <tbody>
@@ -30,7 +33,10 @@ function SingleCampus(props) {
                   return <tr key={index}>
                     <td>{index + 1}</td>
                     <td><NavLink to={`/students/${student.id}`}>{student.firstName + ' ' + student.lastName}</NavLink></td>
-                    <td><button value={student.id} onClick={props.handleClick} className="btn btn-danger">>DELETE STUDENT </button></td>
+                    <td>{student.age}</td>
+                    <td>{student.gender}</td>
+                    <td>{student.email}</td>
+                    <td><button value={student.id} onClick={props.handleClick} className="btn btn-danger">DELETE STUDENT </button></td>
                   </tr>
                 })
               }

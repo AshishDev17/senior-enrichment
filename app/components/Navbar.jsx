@@ -8,7 +8,7 @@ export default class Navbar extends Component{
       <nav className="navbar navbar-default">
         <div className="container-fluid">
           <div className="navbar-header">
-            <NavLink className="navbar-brand" to="/home">Margaret Hamilton Interplanetary Academy</NavLink>
+            <NavLink className="navbar-brand" to="/">Margaret Hamilton Interplanetary Academy</NavLink>
           </div>
           <div  id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
