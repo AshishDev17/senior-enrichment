@@ -19,18 +19,18 @@ function Campuses(props) {
         <div className="row">
           {
           campuses.map((campus) => {
-          return <div key={campus.id} className="col-xs-3 campus-font">
-              <NavLink to={`/campuses/${campus.id}`}>
-
-              <h4>{campus.name}</h4>
-              </NavLink>
-              <div>
-              <p>{campus.description}</p>
+          return <div key={campus.id} className="col-xs-4">
+              <div className="campus-style">
+                <NavLink to={`/campuses/${campus.id}`}>
+                <h4>{campus.name}</h4>
+                </NavLink>
+                <div>
+                <p>{campus.description}</p>
+                </div>
+                <div>
+                  <button value={campus.id} onClick={props.handleClick} className="btn btn-danger">Delete {campus.name} </button>
+                </div>
               </div>
-              <div>
-                <button value={campus.id} onClick={props.handleClick} className="btn btn-danger">Delete {campus.name} </button>
-              </div>
-              <hr/>
             </div>
           })
         }
