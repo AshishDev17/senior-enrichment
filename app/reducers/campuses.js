@@ -70,7 +70,7 @@ export function editCampus(id, campus, history){
       .then(res => res.data)
       .then(campus => {
         dispatch(editCampusInState(campus));
-        history.push(`/campuses/${campus.id}`);
+        history.push('/campuses');
       });
   }
 }

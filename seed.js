@@ -5,17 +5,17 @@ const Promise = require('bluebird');
 const chalk = require('chalk');
 
 const campuses = [
-  {name: "Campus One",
-   "description": "This is campus one"
+  {name: "Jupiter",
+   "description": "This is Jupiter campus."
   },
-  {name: 'Campus Two',
-   description: 'This is campus two'
+  {name: 'Mars',
+   description: 'This is Mars campus.'
   },
-  {name: 'Campus Three',
-   description: 'This is campus three'
+  {name: 'Saturn',
+   description: 'This is Saturn campus.'
   },
-  {name: 'Campus Four',
-   description: 'This is campus four'
+  {name: 'Venus',
+   description: 'This is Venus campus.'
   }
 ];
 

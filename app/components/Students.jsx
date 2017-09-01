@@ -5,7 +5,16 @@ import {deleteStudent} from '../store';
 import {withRouter, NavLink} from 'react-router-dom';
 
 function Students (props){
-  const students = props.students;
+  const students = [];
+
+  //find only those students that exist in the 'campuses' state
+  for(var i = 0; i < props.students.length; i++){
+    for(var j = 0; j < props.campuses.length; j++){
+     if(props.students[i].campusId === props.campuses[j].id){
+       students.push(props.students[i]);
+     }
+    }
+  }
 
     if(students){
         return (
@@ -44,25 +53,15 @@ function Students (props){
        )
     }
     else{
-      return <div>No students</div>
+      return <div></div>
     }
 
 }
 
 const mapStateToProps = function(state){
-  let students = [];
-
-  //find only those students that exist in the 'campuses' state
-  for(var i = 0; i < state.students.length; i++){
-    for(var j = 0; j < state.campuses.length; j++){
-     if(state.students[i].campusId === state.campuses[j].id){
-       students.push(state.students[i]);
-     }
-    }
-  }
-
   return{
-    students: students
+    students: state.students,
+    campuses: state.campuses
   }
 }
 

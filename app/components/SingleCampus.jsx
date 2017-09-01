@@ -5,10 +5,16 @@ import {deleteStudent} from '../store';
 import {withRouter, NavLink} from 'react-router-dom';
 
 function SingleCampus(props) {
-  const campus = props.campus;
-  console.log(campus);
+  const campusId = +props.campusId;
+  //get all students from students state whose campusId is equal to campusId passed in params
+  const students = props.students.filter(student => student.campusId === campusId);
+  //get campus from campuses state whose id is equal to campusId passed in params
+  const campus=  props.campuses.find(campus => campus.id === campusId);
+  //replacing the old students array of the campus with the new students array that have the new added student
 
     if(campus){
+      campus.students = students;
+
       return (
         <div>
           <div className="heading">
@@ -55,22 +61,15 @@ function SingleCampus(props) {
 
 
 const mapStateToProps = function(state, ownProps){
-  const campusId = ownProps.match.params.campusId;
-  //get all students from students state whose campusId is equal to campusId passed in params
-  const students = state.students.filter(student => student.campusId === +campusId);
-  //get campus from campuses state whose id is equal to campusId passed in params
-  const campus=  state.campuses.find(campus => campus.id === +campusId);
-  //replacing the old students array of the campus with the new students array that have the new added student
-  if(campus){
-    campus.students = students;
-  }
-
   return{
-        campus: campus
+        campusId: ownProps.match.params.campusId,
+        campuses: state.campuses,
+        students: state.students
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  const campusId = ownProps.match.params.campusId;
   return {
     handleClick(e) {
       const studentId = e.target.value;

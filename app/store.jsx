@@ -6,7 +6,7 @@ import thunkMiddleware from 'redux-thunk'; // https://github.com/gaearon/redux-t
 
 
 //Store
-export default createStore(rootReducer, applyMiddleware(thunkMiddleware, createLogger()))
+export default createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(thunkMiddleware, createLogger()))
 
 export * from './reducers/students';
 export * from './reducers/campuses';
