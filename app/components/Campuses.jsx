@@ -13,7 +13,7 @@ function Campuses(props) {
         </div>
         <div className="row">
           <div className="col-xs-2"><NavLink to="/newcampus"><button className="btn btn-primary">CREATE NEW CAMPUS</button></NavLink></div>
-          <div className="col-xs-offset-8 col-xs-2"> <NavLink to="/newstudent"><button className="btn btn-primary">ADD NEW STUDENT</button></NavLink></div>
+          <div className="col-xs-offset-8 col-xs-2"> <NavLink to="/newstudent"><button className="btn btn-primary">CREATE NEW STUDENT</button></NavLink></div>
         </div>
         <hr/>
         <div className="row">

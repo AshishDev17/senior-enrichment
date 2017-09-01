@@ -10,7 +10,7 @@ function EditCampus(props) {
   if (campus) {
     return (
       <div>
-        <div className="heading"><h2>EDIT CAMPUS {campus.name}</h2></div>
+        <div className="heading"><h2>Edit Campus {campus.name}</h2></div>
         <div className="row">
           <div className="col-xs-offset-3 form-width">
             <form onSubmit={props.handleSubmit}>

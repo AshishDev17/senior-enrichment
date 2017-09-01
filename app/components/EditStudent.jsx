@@ -11,7 +11,7 @@ function CreateStudent(props) {
   if (student) {
     return (
       <div>
-        <div className="heading"><h2>EDIT NEW STUDENT</h2></div>
+        <div className="heading"><h2>Edit {student.firstName + ' ' + student.lastName}</h2></div>
         <div className="row">
           <div className="col-xs-offset-3 form-width">
             <form onSubmit={props.handleSubmit}>

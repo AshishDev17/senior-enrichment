@@ -10,7 +10,7 @@ function SingleStudent(props) {
     return (
       <div>
         <div className="heading"><h3>{student.firstName + ' ' + student.lastName}'s Page</h3></div>
-        <NavLink to={`/editstudent/${student.id}`}><button className="btn btn-info">EDIT STUDENT</button></NavLink>
+        <NavLink to={`/editstudent/${student.id}`}><button className="btn btn-primary">EDIT STUDENT</button></NavLink>
         <div className="spacing">
           <table className="table">
             <thead>

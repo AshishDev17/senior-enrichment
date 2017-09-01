@@ -21,8 +21,8 @@ function SingleCampus(props) {
             <h2>{campus.name}</h2>
           </div>
           <div className="row">
-            <div className="col-xs-3"><NavLink to={`/editcampus/${campus.id}`}><button className="btn btn-info"> EDIT CAMPUS</button></NavLink></div>
-            <div className="col-xs-offset-6 col-xs-3"><NavLink to="/newstudent"><button className="btn btn-info">ADD NEW STUDENT</button></NavLink></div>
+            <div className="col-xs-2"><NavLink to={`/editcampus/${campus.id}`}><button className="btn btn-primary"> EDIT CAMPUS</button></NavLink></div>
+            <div className="col-xs-2"><NavLink to="/newstudent"><button className="btn btn-primary">CREATE NEW STUDENT</button></NavLink></div>
           </div>
           <table className="table table-margin">
             <thead>
