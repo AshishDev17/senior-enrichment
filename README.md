@@ -35,19 +35,19 @@
 
 12. As a user, I can can create a campus : On 'Campuses' view, user can see a 'Create New Campus' button. When user clicks on this       button, he/she can get to the 'Create New Campus' view. 'Create New Campus' view has 'Campus Name' input text box, 'Campus           Description' input text box and 'Submit Campus' button. When user enters the campus name and campus description, and clicks on       the 'Submit Campus' button, user can create a new campus.
 
-13. As a user, I can edit a campus's info, including adding/removing a student to/from that campus : On 'Single Campus' view, user       can see an 'Edit Campus' button. When user clicks on this button, he/she can get to the 'Edit Campus' view. 'Edit Campus' view       has 'Campus Name' input text box, 'Campus Description' input text box and 'Submit Campus' button. Both the input textboxes are       populated with the initial value of the campus. When user edits the campus name or campus description, and clicks on       the       'Submit Campus' button, user can edit a new campus.
-    A user can create a campus from 'Campuses' view as well as from 'Single Campus' view. Both the views have 'Create New Student' button and when the user clicks on this button, he/she can get to the 'Create Student' view. On 'Create Student' view, a user can see the input textboxes that take the inforation of new student. After entering the information of new student, a user can click on the 'Submit  Student' button and create a new student.
+13. As a user, I can edit a campus's info, including adding/removing a student to/from that campus : On 'Single Campus' view, user       can see an 'Edit Campus' button. When user clicks on this button, he/she can get to the 'Edit Campus' view. 'Edit Campus' view       has 'Campus Name' input text box, 'Campus Description' input text box and 'Submit Campus' button. Both the input textboxes are       populated with the initial value of the campus. When user edits the campus name or campus description, and clicks on the             'Submit Campus' button, user can edit a new campus.
+
+    A user can create a student from 'Campuses' view as well as from 'Single Campus' view. Both the views have 'Create New Student' button and when the user clicks on this button, he/she can get to the 'Create Student' view. 'Create Student' view has input textboxes for student's first name, student's last name, student's age and student's email, and select boxes for student's gender and student's campus. After entering the information of new student, a user can click on the 'Submit Student' button and create a new student.
+
     A user can delete a student from the 'Single Campus View'. On 'Single Campus' view, user can see the table of students enrolled in that campus. Each student in the table, has a 'Delete Student' button. When the user clicks  on this button, he/she can delete a student from that campus.
 
+14. As a user, I can can delete a campus : On 'Campuses' view, user can see the list of campuses. Each campus in the list, has a         'Delete Campus' button. When the user clicks on this button, he/she can get delete the campus.
 
-- Actions: as a user I...
-  *
-  *
-  * can delete a campus
-  * can create a student
-  * can edit a student's info, including the campus that student is assigned to
-  * can delete a student
+15. As a user, I can can create a student : A user can create a campus from 'Students' view, 'Campuses' view as well as from 'Single     Campus' view. All three views have 'Create New Student' button and when the user clicks on this button, he/she can get to the        'Create Student' view. 'Create Student' view has input textboxes for student's first name, student's last name, student's age        and student's email, and select boxes for student's gender and student's campus. After entering the information of new student,      a user can click on the 'Submit Student' button and create a new student.
 
+16. As a user, I can edit a student's info, including the campus that student is assigned to : On 'Single Campus' view, user             can see an 'Edit Student' button. When user clicks on this button, he/she can get to the 'Edit Student' view. 'Edit Student'         view has input textboxes for student's first name, student's last name, student's age and student's email, and select boxes for      student's gender and student's campus. The information in the input boxes and select boxes is already populated in from previous     values of the student. After editing the information of  student, a user can click on the 'Submit Student' button and edit a new     student.
+
+17. As a user, I can delete a student : A user can delete student from 'Students' view as well as from 'Single Campus' view.  Both       the views have 'Delete Student' button. When the user clicks on this button, he/she can get delete the student.
 
 
 ------------------- REQUIREMENTS ---------------------------
