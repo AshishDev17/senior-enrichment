@@ -19,7 +19,7 @@ function Campuses(props) {
         <div className="row">
           {
           campuses.map((campus) => {
-          return <div key={campus.id} className="col-xs-3">
+          return <div key={campus.id} className="col-xs-3 campus-font">
               <NavLink to={`/campuses/${campus.id}`}>
 
               <h4>{campus.name}</h4>

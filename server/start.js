@@ -21,6 +21,9 @@ module.exports = app
   .use(express.static(resolve(__dirname, '..', 'public'))) // Serve static files from ../public
   .use(express.static(resolve(__dirname, '..', 'node_modules'))) // Serve static files from ../node_modules
   .use('/api', require('./api')) // Serve our api
+  .use((err, req, res, next) => {   //error handling middleware
+  console.log(err.stack);
+  res.status(err.status || 500).send(err.message || 'Internal Error!')})
   .get('/*', (_, res) => res.sendFile(resolve(__dirname, '..', 'public', 'index.html'))) // Send index.html for any other requests.
 
   // notice the use of `_` as the first parameter above. This is a pattern for parameters that must exist, but you don't use or reference (or need) in the function body that follows.
@@ -37,6 +40,7 @@ if (module === require.main) {
         * In 'api.js', note how `module` (this specific file - i.e. module) is different from `require.main` because this is NOT the file we started in and `require.main` is the file we started in
           ~ To help compare these objects, reference each of their `id` attributes
   */
+
   const server = app.listen(
     process.env.PORT || 1337,
     () => {

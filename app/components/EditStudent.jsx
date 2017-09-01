@@ -30,7 +30,10 @@ function CreateStudent(props) {
                 </div>
                 <div className="form-group">
                   <label>Student Gender: </label>
-                  <input type="text" className="form-control" name="studentGender" defaultValue={student.gender} />
+                  <select name="studentGender" className="form-control" defaultValue={student.gender}>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
                 </div>
                 <div className="form-group">
                   <label>Student Email: </label>

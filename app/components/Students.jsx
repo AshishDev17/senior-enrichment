@@ -30,7 +30,10 @@ function Students (props){
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Student Name </th>
+                    <th>Name </th>
+                    <th>Age </th>
+                    <th>Gender </th>
+                    <th>Email </th>
                     <th>Campus Name</th>
                   </tr>
                 </thead>
@@ -40,6 +43,9 @@ function Students (props){
                     return <tr key={index}>
                       <td>{index + 1}</td>
                       <td><NavLink to={`/students/${student.id}`}>{student.firstName + ' ' + student.lastName}</NavLink></td>
+                      <td>{student.age}</td>
+                      <td>{student.gender}</td>
+                      <td>{student.email}</td>
                       <td><NavLink to={`/campuses/${student.campus.id}`}>{student.campus.name}</NavLink></td>
                       <td><button value={student.id} onClick={props.handleClick} className="btn btn-danger">DELETE STUDENT </button></td>
                     </tr>

@@ -31,6 +31,7 @@ module.exports = db.define('student', {
   },
   email:{
     type: Sequelize.STRING,
+    unique: true,
     allowNull: false,
     validate: {
       isEmail: true
