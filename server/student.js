@@ -1,6 +1,6 @@
 'use strict'
 const studentRouter = require('express').Router();
-const db = require('../db');
+const db = require('../db'); /* It doesn't look like we use db here */
 const {Student, Campus} = require('../db/models/index');
 const Promise = require('bluebird');
 

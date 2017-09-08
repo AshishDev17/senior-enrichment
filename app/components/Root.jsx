@@ -18,6 +18,10 @@ export default class Root extends Component {
   componentDidMount() {
     store.dispatch(fetchCampuses());
     store.dispatch(fetchStudents());
+
+    /*
+      You can use mapDispatchToProps for this component so you won't need to access the redux store directly.
+    */
   }
 
   render() {

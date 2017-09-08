@@ -88,8 +88,14 @@ export default function reducer(state=[], action) {
       return [...state, action.student];
     case REMOVE_STUDENT_FROM_STATE:
       return state.filter(student => student.id !== +action.studentId);
+      /*
+        Instead of doing this, maybe we can just fetch all students again?
+      */
     case EDIT_STUDENT_IN_STATE:
       return state.map(student => student.id === action.student.id ? action.student : student);
+      /*
+        It looks like when you update/delete a student, you interact with the back end and front end separately - instead of doing that, maybe you can just fetch the students again.
+      */
     default:
       return state;
   }

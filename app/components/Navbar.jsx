@@ -21,3 +21,7 @@ export default class Navbar extends Component{
     )
   }
 }
+
+/*
+  Since this component doesn't have any life cycle events or state, you can make it a dummy component
+*/

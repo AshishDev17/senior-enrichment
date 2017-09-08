@@ -20,6 +20,9 @@ campusRouter.get('/:campusId', (req, res, next) => {
   .then((campus) => {
     if(!campus) throw new Error('Campus does not exist with this id');
     return campus.reload(Campus.options.scopes.getCampusesWithStudents());
+    /*
+      Not entirely sure what campus.reload does here - do we need it? Also, if we want the students as part of the campus information every time we query for campuses, maybe students can be in the default scope for campuses
+    */
   })
   .then(campus => {
     res.status(200).json(campus);

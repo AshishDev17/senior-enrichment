@@ -39,6 +39,7 @@ module.exports = db.define('student', {
   }
 }, {
   scopes: {
+    /* Small type here - however, it's consisent in your routes so that's good :) */
     getStudsentsWithCampuses: () => ({
       include:[
         {

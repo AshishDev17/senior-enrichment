@@ -34,6 +34,9 @@ function CreateCampus(props) {
 const mapStateToProps = function (state, ownprops) {
   return {
     state: state
+    /*
+      You should only map to state the parts of state that you need. Mapping everything will lead to unnecessary re-renders for this component. For this component, it doesn't look like you need state at all.
+    */
   }
 }
 
@@ -43,6 +46,10 @@ const mapDispatchToProps = function (dispatch, ownProps) {
       e.preventDefault();
       let campusName = e.target.campusName.value || '';
       let campusDescription = e.target.campusDescription.value || '';
+
+      /*
+        If you have back-end validation that won't accept empty campus name and description, then you may want to implement front end validation.
+      */
 
       dispatch(postCampus({ name: campusName, description: campusDescription }, ownProps.history));
     }

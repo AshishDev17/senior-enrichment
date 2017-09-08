@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 function CreateStudent(props) {
   const campuses = props.campuses;
-
+  console.log(campuses, 'campuses')
   return (
     <div>
       <div>
@@ -48,6 +48,9 @@ function CreateStudent(props) {
                     })
                   }
                   <option value=""></option>
+                  {/*
+                    I think you included an empty option above in order to leave the field blank initially. If you do this, I would recommend implementing some kind of front end validation, since it appears that students must have a campus.
+                  */}
                 </select>
               </div>
               <div>

@@ -16,6 +16,10 @@ function Students (props){
     }
   }
 
+  /*
+    Are all of the students not accessible in the students state in redux?
+  */
+
     if(students){
         return (
           <div>
@@ -51,6 +55,10 @@ function Students (props){
                     </tr>
                   })
                 }
+                {/*
+                  This can probably be converted to a separate component - looks pretty similar to the component mapped in SingleCampus
+                */}
+
                 </tbody>
               </table>
             </div>

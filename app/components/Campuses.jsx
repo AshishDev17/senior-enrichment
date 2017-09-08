@@ -33,6 +33,9 @@ function Campuses(props) {
               </div>
             </div>
           })
+          /*
+            It may make sense to turn the JSX for a campus row item into a separate component - this way things are more modular.
+          */
         }
         </div>
       </div>

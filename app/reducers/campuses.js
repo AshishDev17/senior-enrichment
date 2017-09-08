@@ -6,6 +6,10 @@ const ADD_CAMPUS_TO_STATE = 'ADD_CAMPUS_TO_STATE';
 const REMOVE_CAMPUS_FROM_STATE = 'REMOVE_CAMPUS_FROM_STATE';
 const EDIT_CAMPUS_IN_STATE = 'EDIT_CAMPUS_IN_STATE';
 
+/*
+  It would be helpful to include some kind of representation of initial state in this reducer.
+*/
+
 //Action Creators
 export function gotCampusesFromServer(campuses) {
   return {
@@ -34,6 +38,10 @@ export function editCampusInState(campus){
     campus: campus
   }
 }
+
+/*
+  If none of your components need access to an action creator, there's no need to export them. Here, the components need access to the thunks you created below, and then thunks use the action creators. The components don't directly need to action creators it seems.
+*/
 
 //Thunk Creators
 export function fetchCampuses(){

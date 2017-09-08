@@ -75,6 +75,10 @@ const mapStateToProps = function (state, ownProps) {
   }
 }
 
+/*
+  Comments similar to EditCampus apply here as well
+*/
+
 const mapDispatchToProps = function (dispatch, ownProps) {
   const studentId = ownProps.match.params.studentId;
 

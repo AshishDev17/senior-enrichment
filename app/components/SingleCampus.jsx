@@ -46,6 +46,13 @@ function SingleCampus(props) {
                     <td><button value={student.id} onClick={props.handleClick} className="btn btn-danger">DELETE STUDENT </button></td>
                   </tr>
                 })
+
+                /*
+                  Maybe this could be a separate JSX component - maybe something like StudentRowItem
+
+                  Also, try avoid using the array index as the key when you map over the array:
+                  https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-array-index-key.md
+                */
               }
             </tbody>
           </table>
@@ -66,6 +73,10 @@ const mapStateToProps = function(state, ownProps){
         campuses: state.campuses,
         students: state.students
   }
+
+  /*
+    If we created a selectedCampus property on our campuses state, we could use it here, instead of needing to grab all campuses and all students.
+  */
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

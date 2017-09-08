@@ -41,6 +41,10 @@ function SingleStudent(props) {
   else{
     return <div></div>
   }
+
+  /*
+    Same comments in EditCampus regarding the if else statement apply here
+  */
 }
 
 const mapStateToProps = function(state, ownProps){
@@ -51,6 +55,10 @@ const mapStateToProps = function(state, ownProps){
       return student.id === +studentId;
     })
   }
+
+  /*
+    It could be helpful to have a property on our students state callened selectedStudent, similar to the campuses state
+  */
 }
 
 export default withRouter(connect(mapStateToProps)(SingleStudent));
